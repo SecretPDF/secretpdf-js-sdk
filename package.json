@@ -1,0 +1,49 @@
+{
+  "name": "@secretpdf/sdk",
+  "version": "1.0.0",
+  "description": "TypeScript/JavaScript SDK for Secret PDF API - Generate PDFs from HTML templates in one api call.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "sdk": "rimraf ./src/api && openapi-generator-cli generate -i http://localhost:8080/documentation/json -g typescript-fetch -o ./src/api",
+    "clean": "rimraf ./dist"
+  },
+  "keywords": [
+    "pdf",
+    "pdf-generation",
+    "html-to-pdf",
+    "typescript",
+    "sdk",
+    "api-client",
+    "secretpdf"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SecretPDF/secretpdf-js-sdk"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.21.2",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.7.2"
+  }
+}
