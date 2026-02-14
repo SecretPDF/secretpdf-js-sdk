@@ -8,7 +8,7 @@ Name | Type
 ------------ | -------------
 `prompt` | string
 `params` | object
-`templateName` | string
+`name` | string
 
 ## Example
 
@@ -19,7 +19,7 @@ import type { GenerateTemplateFromPromptRequest } from ''
 const example = {
   "prompt": null,
   "params": null,
-  "templateName": null,
+  "name": null,
 } satisfies GenerateTemplateFromPromptRequest
 
 console.log(example)

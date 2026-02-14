@@ -90,7 +90,7 @@ example().catch(console.error);
 
 ## deleteTemplate
 
-> Logout200Response deleteTemplate(templateId)
+> CreateTemplate200Response deleteTemplate(templateId)
 
 
 
@@ -141,7 +141,7 @@ example().catch(console.error);
 
 ### Return type
 
-[**Logout200Response**](Logout200Response.md)
+[**CreateTemplate200Response**](CreateTemplate200Response.md)
 
 ### Authorization
 
@@ -314,7 +314,7 @@ example().catch(console.error);
 
 ## getTemplate
 
-> ListTemplates200ResponseTemplatesInner getTemplate(templateId)
+> CreateTemplate200Response getTemplate(templateId)
 
 
 
@@ -365,7 +365,7 @@ example().catch(console.error);
 
 ### Return type
 
-[**ListTemplates200ResponseTemplatesInner**](ListTemplates200ResponseTemplatesInner.md)
+[**CreateTemplate200Response**](CreateTemplate200Response.md)
 
 ### Authorization
 
@@ -447,6 +447,7 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Default Response |  -  |
+| **400** | Default Response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 

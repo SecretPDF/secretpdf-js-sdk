@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { ListTemplates200ResponseTemplatesInner } from './ListTemplates200ResponseTemplatesInner';
+import type { ListTemplates200ResponseDataInner } from './ListTemplates200ResponseDataInner';
 import {
-    ListTemplates200ResponseTemplatesInnerFromJSON,
-    ListTemplates200ResponseTemplatesInnerFromJSONTyped,
-    ListTemplates200ResponseTemplatesInnerToJSON,
-    ListTemplates200ResponseTemplatesInnerToJSONTyped,
-} from './ListTemplates200ResponseTemplatesInner';
+    ListTemplates200ResponseDataInnerFromJSON,
+    ListTemplates200ResponseDataInnerFromJSONTyped,
+    ListTemplates200ResponseDataInnerToJSON,
+    ListTemplates200ResponseDataInnerToJSONTyped,
+} from './ListTemplates200ResponseDataInner';
 
 /**
  * 
@@ -41,10 +41,10 @@ export interface CreateTemplate200Response {
     message?: string;
     /**
      * 
-     * @type {ListTemplates200ResponseTemplatesInner}
+     * @type {ListTemplates200ResponseDataInner}
      * @memberof CreateTemplate200Response
      */
-    data?: ListTemplates200ResponseTemplatesInner;
+    data?: ListTemplates200ResponseDataInner;
 }
 
 /**
@@ -66,7 +66,7 @@ export function CreateTemplate200ResponseFromJSONTyped(json: any, ignoreDiscrimi
         
         'success': json['success'] == null ? undefined : json['success'],
         'message': json['message'] == null ? undefined : json['message'],
-        'data': json['data'] == null ? undefined : ListTemplates200ResponseTemplatesInnerFromJSON(json['data']),
+        'data': json['data'] == null ? undefined : ListTemplates200ResponseDataInnerFromJSON(json['data']),
     };
 }
 
@@ -83,7 +83,7 @@ export function CreateTemplate200ResponseToJSONTyped(value?: CreateTemplate200Re
         
         'success': value['success'],
         'message': value['message'],
-        'data': ListTemplates200ResponseTemplatesInnerToJSON(value['data']),
+        'data': ListTemplates200ResponseDataInnerToJSON(value['data']),
     };
 }
 

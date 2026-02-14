@@ -1,6 +1,6 @@
 {
   "name": "@secretpdf/sdk",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "TypeScript/JavaScript SDK for Secret PDF API - Generate PDFs from HTML templates in one api call.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

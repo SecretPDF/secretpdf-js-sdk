@@ -16,72 +16,65 @@ import { mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface ListTemplates200ResponseTemplatesInner
+ * @interface ListTemplates200ResponseDataInner
  */
-export interface ListTemplates200ResponseTemplatesInner {
+export interface ListTemplates200ResponseDataInner {
     /**
      * 
      * @type {string}
-     * @memberof ListTemplates200ResponseTemplatesInner
+     * @memberof ListTemplates200ResponseDataInner
      */
     id?: string;
     /**
      * 
      * @type {string}
-     * @memberof ListTemplates200ResponseTemplatesInner
-     */
-    userId?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ListTemplates200ResponseTemplatesInner
+     * @memberof ListTemplates200ResponseDataInner
      */
     content?: string;
     /**
      * 
      * @type {string}
-     * @memberof ListTemplates200ResponseTemplatesInner
+     * @memberof ListTemplates200ResponseDataInner
      */
     name?: string;
     /**
      * 
      * @type {string}
-     * @memberof ListTemplates200ResponseTemplatesInner
+     * @memberof ListTemplates200ResponseDataInner
      */
     size?: string;
     /**
      * 
      * @type {string}
-     * @memberof ListTemplates200ResponseTemplatesInner
+     * @memberof ListTemplates200ResponseDataInner
      */
     createdAt?: string;
     /**
      * 
      * @type {string}
-     * @memberof ListTemplates200ResponseTemplatesInner
+     * @memberof ListTemplates200ResponseDataInner
      */
     updatedAt?: string;
 }
 
 /**
- * Check if a given object implements the ListTemplates200ResponseTemplatesInner interface.
+ * Check if a given object implements the ListTemplates200ResponseDataInner interface.
  */
-export function instanceOfListTemplates200ResponseTemplatesInner(value: object): value is ListTemplates200ResponseTemplatesInner {
+export function instanceOfListTemplates200ResponseDataInner(value: object): value is ListTemplates200ResponseDataInner {
     return true;
 }
 
-export function ListTemplates200ResponseTemplatesInnerFromJSON(json: any): ListTemplates200ResponseTemplatesInner {
-    return ListTemplates200ResponseTemplatesInnerFromJSONTyped(json, false);
+export function ListTemplates200ResponseDataInnerFromJSON(json: any): ListTemplates200ResponseDataInner {
+    return ListTemplates200ResponseDataInnerFromJSONTyped(json, false);
 }
 
-export function ListTemplates200ResponseTemplatesInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): ListTemplates200ResponseTemplatesInner {
+export function ListTemplates200ResponseDataInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): ListTemplates200ResponseDataInner {
     if (json == null) {
         return json;
     }
     return {
         
         'id': json['id'] == null ? undefined : json['id'],
-        'userId': json['userId'] == null ? undefined : json['userId'],
         'content': json['content'] == null ? undefined : json['content'],
         'name': json['name'] == null ? undefined : json['name'],
         'size': json['size'] == null ? undefined : json['size'],
@@ -90,11 +83,11 @@ export function ListTemplates200ResponseTemplatesInnerFromJSONTyped(json: any, i
     };
 }
 
-export function ListTemplates200ResponseTemplatesInnerToJSON(json: any): ListTemplates200ResponseTemplatesInner {
-    return ListTemplates200ResponseTemplatesInnerToJSONTyped(json, false);
+export function ListTemplates200ResponseDataInnerToJSON(json: any): ListTemplates200ResponseDataInner {
+    return ListTemplates200ResponseDataInnerToJSONTyped(json, false);
 }
 
-export function ListTemplates200ResponseTemplatesInnerToJSONTyped(value?: ListTemplates200ResponseTemplatesInner | null, ignoreDiscriminator: boolean = false): any {
+export function ListTemplates200ResponseDataInnerToJSONTyped(value?: ListTemplates200ResponseDataInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
@@ -102,7 +95,6 @@ export function ListTemplates200ResponseTemplatesInnerToJSONTyped(value?: ListTe
     return {
         
         'id': value['id'],
-        'userId': value['userId'],
         'content': value['content'],
         'name': value['name'],
         'size': value['size'],

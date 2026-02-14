@@ -16,32 +16,23 @@
 import * as runtime from '../runtime';
 import type {
   CreateTemplate200Response,
-  CreateTemplate400Response,
   CreateTemplateRequest,
-  GenerateTemplateFromPdf500Response,
   GenerateTemplateFromPromptRequest,
   ListTemplates200Response,
-  ListTemplates200ResponseTemplatesInner,
-  Logout200Response,
+  ListTemplates400Response,
   UpdateTemplateRequest,
 } from '../models/index';
 import {
     CreateTemplate200ResponseFromJSON,
     CreateTemplate200ResponseToJSON,
-    CreateTemplate400ResponseFromJSON,
-    CreateTemplate400ResponseToJSON,
     CreateTemplateRequestFromJSON,
     CreateTemplateRequestToJSON,
-    GenerateTemplateFromPdf500ResponseFromJSON,
-    GenerateTemplateFromPdf500ResponseToJSON,
     GenerateTemplateFromPromptRequestFromJSON,
     GenerateTemplateFromPromptRequestToJSON,
     ListTemplates200ResponseFromJSON,
     ListTemplates200ResponseToJSON,
-    ListTemplates200ResponseTemplatesInnerFromJSON,
-    ListTemplates200ResponseTemplatesInnerToJSON,
-    Logout200ResponseFromJSON,
-    Logout200ResponseToJSON,
+    ListTemplates400ResponseFromJSON,
+    ListTemplates400ResponseToJSON,
     UpdateTemplateRequestFromJSON,
     UpdateTemplateRequestToJSON,
 } from '../models/index';
@@ -130,7 +121,7 @@ export class TemplatesApi extends runtime.BaseAPI {
     /**
      * Delete a template
      */
-    async deleteTemplateRaw(requestParameters: DeleteTemplateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Logout200Response>> {
+    async deleteTemplateRaw(requestParameters: DeleteTemplateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateTemplate200Response>> {
         if (requestParameters['templateId'] == null) {
             throw new runtime.RequiredError(
                 'templateId',
@@ -165,13 +156,13 @@ export class TemplatesApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => Logout200ResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateTemplate200ResponseFromJSON(jsonValue));
     }
 
     /**
      * Delete a template
      */
-    async deleteTemplate(requestParameters: DeleteTemplateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Logout200Response> {
+    async deleteTemplate(requestParameters: DeleteTemplateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateTemplate200Response> {
         const response = await this.deleteTemplateRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -299,7 +290,7 @@ export class TemplatesApi extends runtime.BaseAPI {
     /**
      * Get a template by ID
      */
-    async getTemplateRaw(requestParameters: GetTemplateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ListTemplates200ResponseTemplatesInner>> {
+    async getTemplateRaw(requestParameters: GetTemplateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateTemplate200Response>> {
         if (requestParameters['templateId'] == null) {
             throw new runtime.RequiredError(
                 'templateId',
@@ -334,13 +325,13 @@ export class TemplatesApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => ListTemplates200ResponseTemplatesInnerFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateTemplate200ResponseFromJSON(jsonValue));
     }
 
     /**
      * Get a template by ID
      */
-    async getTemplate(requestParameters: GetTemplateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ListTemplates200ResponseTemplatesInner> {
+    async getTemplate(requestParameters: GetTemplateRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateTemplate200Response> {
         const response = await this.getTemplateRaw(requestParameters, initOverrides);
         return await response.value();
     }

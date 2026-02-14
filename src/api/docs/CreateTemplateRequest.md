@@ -6,9 +6,9 @@
 
 Name | Type
 ------------ | -------------
-`templateContent` | string
-`templateName` | string
-`templateSize` | string
+`content` | string
+`name` | string
+`size` | string
 
 ## Example
 
@@ -17,9 +17,9 @@ import type { CreateTemplateRequest } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "templateContent": null,
-  "templateName": null,
-  "templateSize": null,
+  "content": null,
+  "name": null,
+  "size": null,
 } satisfies CreateTemplateRequest
 
 console.log(example)

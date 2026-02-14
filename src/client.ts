@@ -3,6 +3,7 @@ import {
   AuthenticationApi,
   DocumentsApi,
   TemplatesApi,
+  ResponseError,
 } from './api/index';
 import type {
   GenerateDocument200Response,
@@ -11,8 +12,65 @@ import type {
   ListGenerationRecords200Response,
   CreateTemplate200Response,
   ListTemplates200Response,
-  ListTemplates200ResponseTemplatesInner,
 } from './api/models/index';
+
+type TemplateResponse = CreateTemplate200Response;
+type TemplatesResponse = ListTemplates200Response; 
+
+/**
+ * Enhanced error class that includes the parsed error body from the API
+ */
+export class SecretPDFError extends Error {
+  public readonly status: number;
+  public readonly statusText: string;
+  public readonly body: any;
+  public readonly errorCode?: string;
+  public readonly errorMessage?: string;
+  
+  constructor(responseError: ResponseError, body: any) {
+    const message = body?.message || body?.error || responseError.message || 'An error occurred';
+    super(message);
+    
+    this.name = 'SecretPDFError';
+    this.status = responseError.response.status;
+    this.statusText = responseError.response.statusText;
+    this.body = body;
+    this.errorCode = body?.error || body?.code || body?.errorCode;
+    this.errorMessage = body?.message || body?.errorMessage;
+  }
+}
+
+/**
+ * Helper function to parse error response body
+ */
+async function parseErrorBody(response: Response): Promise<any> {
+  try {
+    const contentType = response.headers.get('content-type');
+    if (contentType && contentType.includes('application/json')) {
+      return await response.clone().json();
+    } else {
+      return await response.clone().text();
+    }
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Wrapper to handle API errors and parse error bodies
+ */
+async function handleApiCall<T>(apiCall: Promise<T>): Promise<T> {
+  try {
+    return await apiCall;
+  } catch (error) {
+    if (error instanceof ResponseError) {
+      const body = await parseErrorBody(error.response);
+      throw new SecretPDFError(error, body);
+    }
+    throw error;
+  }
+}
+
 
 /**
  * Configuration options for the Secret PDF client
@@ -145,7 +203,7 @@ export class SecretPDFClient {
     returnFile?: boolean;
     sandbox?: boolean;
   }): Promise<GenerateDocument200Response> {
-    return this.documentsApi.generateDocument({
+    return handleApiCall(this.documentsApi.generateDocument({
       generateDocumentRequest: {
         templateId: params.templateId,
         data: params.data,
@@ -153,7 +211,7 @@ export class SecretPDFClient {
         returnFile: params.returnFile,
         sandbox: params.sandbox,
       }
-    });
+    }));
   }
 
   /**
@@ -168,7 +226,7 @@ export class SecretPDFClient {
    * ```
    */
   async getGenerationStats(): Promise<GetGenerationStats200Response> {
-    return this.documentsApi.getGenerationStats();
+    return handleApiCall(this.documentsApi.getGenerationStats());
   }
 
   /**
@@ -183,7 +241,7 @@ export class SecretPDFClient {
    * ```
    */
   async getUsageStats(): Promise<GetUsageStats200Response> {
-    return this.documentsApi.getUsageStats();
+    return handleApiCall(this.documentsApi.getUsageStats());
   }
 
   /**
@@ -202,41 +260,41 @@ export class SecretPDFClient {
     page?: number;
     limit?: number;
   }): Promise<ListGenerationRecords200Response> {
-    return this.documentsApi.listGenerationRecords({
+    return handleApiCall(this.documentsApi.listGenerationRecords({
       page: params?.page,
       limit: params?.limit,
-    });
+    }));
   }
 
   /**
    * Create a new HTML template
    * 
-   * @param templateContent - HTML template content (required)
-   * @param templateName - Name of the template
-   * @param templateSize - Page size (e.g., A4, Letter, 100mm|100mm)
+   * @param content - HTML template content (required)
+   * @param name - Name of the template
+   * @param size - Page size (e.g., A4, Letter, 100mm|100mm)
    * @returns Promise with created template
    * 
    * @example
    * ```typescript
    * const template = await client.createTemplate({
-   *   templateContent: '<html><body>{{content}}</body></html>',
-   *   templateName: 'Invoice Template',
-   *   templateSize: 'A4'
+   *   content: '<html><body>{{content}}</body></html>',
+   *   name: 'Invoice Template',
+   *   size: 'A4'
    * });
    * ```
    */
   async createTemplate(params: {
-    templateContent: string;
-    templateName?: string;
-    templateSize?: string;
-  }): Promise<CreateTemplate200Response> {
-    return this.templatesApi.createTemplate({
+    content: string;
+    name?: string;
+    size?: string;
+  }): Promise<TemplateResponse> {
+    return handleApiCall(this.templatesApi.createTemplate({
       createTemplateRequest: {
-        templateContent: params.templateContent,
-        templateName: params.templateName,
-        templateSize: params.templateSize,
+        content: params.content,
+        name: params.name,
+        size: params.size,
       }
-    });
+    }));
   }
 
   /**
@@ -249,8 +307,8 @@ export class SecretPDFClient {
    * const templates = await client.listTemplates();
    * ```
    */
-  async listTemplates(): Promise<ListTemplates200Response> {
-    return this.templatesApi.listTemplates();
+  async listTemplates(): Promise<TemplatesResponse> {
+    return handleApiCall(this.templatesApi.listTemplates());
   }
 
   /**
@@ -264,42 +322,43 @@ export class SecretPDFClient {
    * const template = await client.getTemplate('template-123');
    * ```
    */
-  async getTemplate(templateId: string): Promise<ListTemplates200ResponseTemplatesInner> {
-    return this.templatesApi.getTemplate({ templateId });
+  async getTemplate(templateId: string): Promise<TemplateResponse> {
+    return handleApiCall(this.templatesApi.getTemplate({ templateId }));
   }
 
   /**
    * Update an existing template
    * 
-   * @param templateId - The template ID
-   * @param templateContent - New HTML content
-   * @param templateName - New template name
-   * @param templateSize - New page size
+   * @param id - The template ID
+   * @param content - New HTML content
+   * @param name - New template name
+   * @param size - New page size
    * @returns Promise with updated template
    * 
    * @example
    * ```typescript
    * const updated = await client.updateTemplate({
-   *   templateId: 'template-123',
-   *   templateName: 'Updated Invoice',
-   *   templateContent: '<html>...</html>'
+   *   id: 'template-123',
+   *   name: 'Updated Invoice',
+   *   content: '<html>...</html>'
    * });
    * ```
    */
-  async updateTemplate(params: {
-    templateId: string;
-    templateContent?: string;
-    templateName?: string;
-    templateSize?: string;
-  }): Promise<CreateTemplate200Response> {
-    return this.templatesApi.updateTemplate({
-      templateId: params.templateId,
+  async updateTemplate(
+    id: string,
+    params: {
+    content?: string;
+    name?: string;
+    size?: string;
+  }): Promise<TemplateResponse> {
+    return handleApiCall(this.templatesApi.updateTemplate({
+      templateId: id,
       updateTemplateRequest: {
-        templateContent: params.templateContent,
-        templateName: params.templateName,
-        templateSize: params.templateSize,
+        content: params.content,
+        name: params.name,
+        size: params.size,
       }
-    });
+    }));
   }
 
   /**
@@ -313,8 +372,8 @@ export class SecretPDFClient {
    * await client.deleteTemplate('template-123');
    * ```
    */
-  async deleteTemplate(templateId: string): Promise<void> {
-    await this.templatesApi.deleteTemplate({ templateId });
+  async deleteTemplate(templateId: string): Promise<TemplateResponse> {
+    return handleApiCall(this.templatesApi.deleteTemplate({ templateId }));
   }
 
   /**
@@ -329,8 +388,8 @@ export class SecretPDFClient {
    * const template = await client.generateTemplateFromPdf(file);
    * ```
    */
-  async generateTemplateFromPdf(file: Blob): Promise<CreateTemplate200Response> {
-    return this.templatesApi.generateTemplateFromPdf({ file });
+  async generateTemplateFromPdf(file: Blob): Promise<TemplateResponse> {
+    return handleApiCall(this.templatesApi.generateTemplateFromPdf({ file }));
   }
 
   /**
@@ -338,7 +397,7 @@ export class SecretPDFClient {
    * 
    * @param prompt - Description of the desired template
    * @param params - Data fields that will be used as placeholders
-   * @param templateName - Optional name for the generated template
+   * @param name - Optional name for the generated template
    * @returns Promise with generated template
    * 
    * @example
@@ -353,15 +412,15 @@ export class SecretPDFClient {
   async generateTemplateFromPrompt(params: {
     prompt: string;
     params: Record<string, any>;
-    templateName?: string;
-  }): Promise<CreateTemplate200Response> {
-    return this.templatesApi.generateTemplateFromPrompt({
+    name?: string;
+  }): Promise<TemplateResponse> {
+    return handleApiCall(this.templatesApi.generateTemplateFromPrompt({
       generateTemplateFromPromptRequest: {
         prompt: params.prompt,
         params: params.params,
-        templateName: params.templateName,
+        name: params.name,
       }
-    });
+    }));
   }
 
   /**

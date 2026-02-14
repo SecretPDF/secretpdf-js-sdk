@@ -6,7 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`templates` | [Array&lt;ListTemplates200ResponseTemplatesInner&gt;](ListTemplates200ResponseTemplatesInner.md)
+`success` | boolean
+`data` | [Array&lt;ListTemplates200ResponseDataInner&gt;](ListTemplates200ResponseDataInner.md)
 
 ## Example
 
@@ -15,7 +16,8 @@ import type { ListTemplates200Response } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "templates": null,
+  "success": null,
+  "data": null,
 } satisfies ListTemplates200Response
 
 console.log(example)

@@ -1,5 +1,5 @@
 
-# CreateTemplate400Response
+# ListTemplates400Response
 
 
 ## Properties
@@ -7,16 +7,18 @@
 Name | Type
 ------------ | -------------
 `error` | string
+`message` | string
 
 ## Example
 
 ```typescript
-import type { CreateTemplate400Response } from ''
+import type { ListTemplates400Response } from ''
 
 // TODO: Update the object below with actual values
 const example = {
   "error": null,
-} satisfies CreateTemplate400Response
+  "message": null,
+} satisfies ListTemplates400Response
 
 console.log(example)
 
@@ -25,7 +27,7 @@ const exampleJSON: string = JSON.stringify(example)
 console.log(exampleJSON)
 
 // Parse the JSON string back to an object
-const exampleParsed = JSON.parse(exampleJSON) as CreateTemplate400Response
+const exampleParsed = JSON.parse(exampleJSON) as ListTemplates400Response
 console.log(exampleParsed)
 ```
 

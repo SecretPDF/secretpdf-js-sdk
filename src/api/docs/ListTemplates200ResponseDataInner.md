@@ -1,5 +1,5 @@
 
-# ListTemplates200ResponseTemplatesInner
+# ListTemplates200ResponseDataInner
 
 
 ## Properties
@@ -7,7 +7,6 @@
 Name | Type
 ------------ | -------------
 `id` | string
-`userId` | string
 `content` | string
 `name` | string
 `size` | string
@@ -17,18 +16,17 @@ Name | Type
 ## Example
 
 ```typescript
-import type { ListTemplates200ResponseTemplatesInner } from ''
+import type { ListTemplates200ResponseDataInner } from ''
 
 // TODO: Update the object below with actual values
 const example = {
   "id": null,
-  "userId": null,
   "content": null,
   "name": null,
   "size": null,
   "createdAt": null,
   "updatedAt": null,
-} satisfies ListTemplates200ResponseTemplatesInner
+} satisfies ListTemplates200ResponseDataInner
 
 console.log(example)
 
@@ -37,7 +35,7 @@ const exampleJSON: string = JSON.stringify(example)
 console.log(exampleJSON)
 
 // Parse the JSON string back to an object
-const exampleParsed = JSON.parse(exampleJSON) as ListTemplates200ResponseTemplatesInner
+const exampleParsed = JSON.parse(exampleJSON) as ListTemplates200ResponseDataInner
 console.log(exampleParsed)
 ```
 

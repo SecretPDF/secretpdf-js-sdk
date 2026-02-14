@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { ListTemplates200ResponseTemplatesInner } from './ListTemplates200ResponseTemplatesInner';
+import type { ListTemplates200ResponseDataInner } from './ListTemplates200ResponseDataInner';
 import {
-    ListTemplates200ResponseTemplatesInnerFromJSON,
-    ListTemplates200ResponseTemplatesInnerFromJSONTyped,
-    ListTemplates200ResponseTemplatesInnerToJSON,
-    ListTemplates200ResponseTemplatesInnerToJSONTyped,
-} from './ListTemplates200ResponseTemplatesInner';
+    ListTemplates200ResponseDataInnerFromJSON,
+    ListTemplates200ResponseDataInnerFromJSONTyped,
+    ListTemplates200ResponseDataInnerToJSON,
+    ListTemplates200ResponseDataInnerToJSONTyped,
+} from './ListTemplates200ResponseDataInner';
 
 /**
  * 
@@ -29,10 +29,16 @@ import {
 export interface ListTemplates200Response {
     /**
      * 
-     * @type {Array<ListTemplates200ResponseTemplatesInner>}
+     * @type {boolean}
      * @memberof ListTemplates200Response
      */
-    templates?: Array<ListTemplates200ResponseTemplatesInner>;
+    success?: boolean;
+    /**
+     * 
+     * @type {Array<ListTemplates200ResponseDataInner>}
+     * @memberof ListTemplates200Response
+     */
+    data?: Array<ListTemplates200ResponseDataInner>;
 }
 
 /**
@@ -52,7 +58,8 @@ export function ListTemplates200ResponseFromJSONTyped(json: any, ignoreDiscrimin
     }
     return {
         
-        'templates': json['templates'] == null ? undefined : ((json['templates'] as Array<any>).map(ListTemplates200ResponseTemplatesInnerFromJSON)),
+        'success': json['success'] == null ? undefined : json['success'],
+        'data': json['data'] == null ? undefined : ((json['data'] as Array<any>).map(ListTemplates200ResponseDataInnerFromJSON)),
     };
 }
 
@@ -67,7 +74,8 @@ export function ListTemplates200ResponseToJSONTyped(value?: ListTemplates200Resp
 
     return {
         
-        'templates': value['templates'] == null ? undefined : ((value['templates'] as Array<any>).map(ListTemplates200ResponseTemplatesInnerToJSON)),
+        'success': value['success'],
+        'data': value['data'] == null ? undefined : ((value['data'] as Array<any>).map(ListTemplates200ResponseDataInnerToJSON)),
     };
 }
 

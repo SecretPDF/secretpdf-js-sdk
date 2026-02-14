@@ -1,5 +1,5 @@
 
-# GenerateTemplateFromPdf500Response
+# CreateStorageConfig400Response
 
 
 ## Properties
@@ -7,18 +7,16 @@
 Name | Type
 ------------ | -------------
 `error` | string
-`details` | string
 
 ## Example
 
 ```typescript
-import type { GenerateTemplateFromPdf500Response } from ''
+import type { CreateStorageConfig400Response } from ''
 
 // TODO: Update the object below with actual values
 const example = {
   "error": null,
-  "details": null,
-} satisfies GenerateTemplateFromPdf500Response
+} satisfies CreateStorageConfig400Response
 
 console.log(example)
 
@@ -27,7 +25,7 @@ const exampleJSON: string = JSON.stringify(example)
 console.log(exampleJSON)
 
 // Parse the JSON string back to an object
-const exampleParsed = JSON.parse(exampleJSON) as GenerateTemplateFromPdf500Response
+const exampleParsed = JSON.parse(exampleJSON) as CreateStorageConfig400Response
 console.log(exampleParsed)
 ```
 

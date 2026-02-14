@@ -15,18 +15,18 @@
 
 import * as runtime from '../runtime';
 import type {
+  CreateStorageConfig400Response,
   CreateStorageConfigRequest,
-  CreateTemplate400Response,
   GetStorageConfig200Response,
   ListStorageConfigs200Response,
   Logout200Response,
   UpdateStorageConfigRequest,
 } from '../models/index';
 import {
+    CreateStorageConfig400ResponseFromJSON,
+    CreateStorageConfig400ResponseToJSON,
     CreateStorageConfigRequestFromJSON,
     CreateStorageConfigRequestToJSON,
-    CreateTemplate400ResponseFromJSON,
-    CreateTemplate400ResponseToJSON,
     GetStorageConfig200ResponseFromJSON,
     GetStorageConfig200ResponseToJSON,
     ListStorageConfigs200ResponseFromJSON,

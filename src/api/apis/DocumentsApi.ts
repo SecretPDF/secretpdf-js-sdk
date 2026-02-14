@@ -15,7 +15,7 @@
 
 import * as runtime from '../runtime';
 import type {
-  CreateTemplate400Response,
+  CreateStorageConfig400Response,
   GenerateDocument200Response,
   GenerateDocumentRequest,
   GetGenerationStats200Response,
@@ -23,8 +23,8 @@ import type {
   ListGenerationRecords200Response,
 } from '../models/index';
 import {
-    CreateTemplate400ResponseFromJSON,
-    CreateTemplate400ResponseToJSON,
+    CreateStorageConfig400ResponseFromJSON,
+    CreateStorageConfig400ResponseToJSON,
     GenerateDocument200ResponseFromJSON,
     GenerateDocument200ResponseToJSON,
     GenerateDocumentRequestFromJSON,

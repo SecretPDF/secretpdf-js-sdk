@@ -8,7 +8,7 @@ Name | Type
 ------------ | -------------
 `success` | boolean
 `message` | string
-`data` | [ListTemplates200ResponseTemplatesInner](ListTemplates200ResponseTemplatesInner.md)
+`data` | [ListTemplates200ResponseDataInner](ListTemplates200ResponseDataInner.md)
 
 ## Example
 

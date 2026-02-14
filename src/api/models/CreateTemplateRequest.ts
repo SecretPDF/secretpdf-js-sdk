@@ -24,26 +24,26 @@ export interface CreateTemplateRequest {
      * @type {string}
      * @memberof CreateTemplateRequest
      */
-    templateContent: string;
+    content: string;
     /**
      * Name of the template
      * @type {string}
      * @memberof CreateTemplateRequest
      */
-    templateName?: string;
+    name?: string;
     /**
      * Page size (e.g., A4, Letter, 100mm|100mm, 10in|10in). Defaults to A4
      * @type {string}
      * @memberof CreateTemplateRequest
      */
-    templateSize?: string;
+    size?: string;
 }
 
 /**
  * Check if a given object implements the CreateTemplateRequest interface.
  */
 export function instanceOfCreateTemplateRequest(value: object): value is CreateTemplateRequest {
-    if (!('templateContent' in value) || value['templateContent'] === undefined) return false;
+    if (!('content' in value) || value['content'] === undefined) return false;
     return true;
 }
 
@@ -57,9 +57,9 @@ export function CreateTemplateRequestFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
         
-        'templateContent': json['templateContent'],
-        'templateName': json['templateName'] == null ? undefined : json['templateName'],
-        'templateSize': json['templateSize'] == null ? undefined : json['templateSize'],
+        'content': json['content'],
+        'name': json['name'] == null ? undefined : json['name'],
+        'size': json['size'] == null ? undefined : json['size'],
     };
 }
 
@@ -74,9 +74,9 @@ export function CreateTemplateRequestToJSONTyped(value?: CreateTemplateRequest |
 
     return {
         
-        'templateContent': value['templateContent'],
-        'templateName': value['templateName'],
-        'templateSize': value['templateSize'],
+        'content': value['content'],
+        'name': value['name'],
+        'size': value['size'],
     };
 }
 

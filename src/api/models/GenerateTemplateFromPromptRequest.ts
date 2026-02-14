@@ -30,13 +30,13 @@ export interface GenerateTemplateFromPromptRequest {
      * @type {object}
      * @memberof GenerateTemplateFromPromptRequest
      */
-    params: object;
+    params?: object;
     /**
      * Name for the generated template
      * @type {string}
      * @memberof GenerateTemplateFromPromptRequest
      */
-    templateName?: string;
+    name?: string;
 }
 
 /**
@@ -44,7 +44,6 @@ export interface GenerateTemplateFromPromptRequest {
  */
 export function instanceOfGenerateTemplateFromPromptRequest(value: object): value is GenerateTemplateFromPromptRequest {
     if (!('prompt' in value) || value['prompt'] === undefined) return false;
-    if (!('params' in value) || value['params'] === undefined) return false;
     return true;
 }
 
@@ -59,8 +58,8 @@ export function GenerateTemplateFromPromptRequestFromJSONTyped(json: any, ignore
     return {
         
         'prompt': json['prompt'],
-        'params': json['params'],
-        'templateName': json['templateName'] == null ? undefined : json['templateName'],
+        'params': json['params'] == null ? undefined : json['params'],
+        'name': json['name'] == null ? undefined : json['name'],
     };
 }
 
@@ -77,7 +76,7 @@ export function GenerateTemplateFromPromptRequestToJSONTyped(value?: GenerateTem
         
         'prompt': value['prompt'],
         'params': value['params'],
-        'templateName': value['templateName'],
+        'name': value['name'],
     };
 }
 
