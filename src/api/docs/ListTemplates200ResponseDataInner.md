@@ -10,6 +10,7 @@ Name | Type
 `content` | string
 `name` | string
 `size` | string
+`orientation` | string
 `createdAt` | string
 `updatedAt` | string
 
@@ -24,6 +25,7 @@ const example = {
   "content": null,
   "name": null,
   "size": null,
+  "orientation": null,
   "createdAt": null,
   "updatedAt": null,
 } satisfies ListTemplates200ResponseDataInner

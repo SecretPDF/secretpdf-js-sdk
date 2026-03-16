@@ -37,6 +37,12 @@ export interface CreateTemplateRequest {
      * @memberof CreateTemplateRequest
      */
     size?: string;
+    /**
+     * Page orientation (portrait or landscape). Defaults to portrait
+     * @type {string}
+     * @memberof CreateTemplateRequest
+     */
+    orientation?: string;
 }
 
 /**
@@ -60,6 +66,7 @@ export function CreateTemplateRequestFromJSONTyped(json: any, ignoreDiscriminato
         'content': json['content'],
         'name': json['name'] == null ? undefined : json['name'],
         'size': json['size'] == null ? undefined : json['size'],
+        'orientation': json['orientation'] == null ? undefined : json['orientation'],
     };
 }
 
@@ -77,6 +84,7 @@ export function CreateTemplateRequestToJSONTyped(value?: CreateTemplateRequest |
         'content': value['content'],
         'name': value['name'],
         'size': value['size'],
+        'orientation': value['orientation'],
     };
 }
 

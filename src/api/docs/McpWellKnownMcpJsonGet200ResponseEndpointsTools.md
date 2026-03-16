@@ -1,28 +1,24 @@
 
-# UpdateTemplateRequest
+# McpWellKnownMcpJsonGet200ResponseEndpointsTools
 
 
 ## Properties
 
 Name | Type
 ------------ | -------------
-`content` | string
-`name` | string
-`size` | string
-`orientation` | string
+`list` | string
+`call` | string
 
 ## Example
 
 ```typescript
-import type { UpdateTemplateRequest } from ''
+import type { McpWellKnownMcpJsonGet200ResponseEndpointsTools } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "content": null,
-  "name": null,
-  "size": null,
-  "orientation": null,
-} satisfies UpdateTemplateRequest
+  "list": null,
+  "call": null,
+} satisfies McpWellKnownMcpJsonGet200ResponseEndpointsTools
 
 console.log(example)
 
@@ -31,7 +27,7 @@ const exampleJSON: string = JSON.stringify(example)
 console.log(exampleJSON)
 
 // Parse the JSON string back to an object
-const exampleParsed = JSON.parse(exampleJSON) as UpdateTemplateRequest
+const exampleParsed = JSON.parse(exampleJSON) as McpWellKnownMcpJsonGet200ResponseEndpointsTools
 console.log(exampleParsed)
 ```
 

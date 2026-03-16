@@ -185,6 +185,8 @@ export class SecretPDFClient {
    * @param data - Data to inject into the template
    * @param storage - Optional storage configuration
    * @param returnFile - If true, return PDF in response (default: true)
+   * @param html - HTML content instead of templateId
+   * @param orientation - Page orientation if html is set (portrait | landscape)
    * @param sandbox - If true, add SECRET watermark and charge 0 credits
    * @returns Promise with the generated document response
    * 
@@ -200,6 +202,8 @@ export class SecretPDFClient {
     templateId?: string;
     data?: Record<string, any>;
     storage?: StorageConfig;
+    html?: string;
+    orientation?: string;
     returnFile?: boolean;
     sandbox?: boolean;
   }): Promise<GenerateDocument200Response> {
@@ -272,6 +276,7 @@ export class SecretPDFClient {
    * @param content - HTML template content (required)
    * @param name - Name of the template
    * @param size - Page size (e.g., A4, Letter, 100mm|100mm)
+   * @param orientation - Page orientation (portait | landscape)
    * @returns Promise with created template
    * 
    * @example
@@ -287,6 +292,7 @@ export class SecretPDFClient {
     content: string;
     name?: string;
     size?: string;
+    orientation?: string;
   }): Promise<TemplateResponse> {
     return handleApiCall(this.templatesApi.createTemplate({
       createTemplateRequest: {
@@ -333,6 +339,7 @@ export class SecretPDFClient {
    * @param content - New HTML content
    * @param name - New template name
    * @param size - New page size
+   * @param orientation - New page orientation
    * @returns Promise with updated template
    * 
    * @example
@@ -350,6 +357,7 @@ export class SecretPDFClient {
     content?: string;
     name?: string;
     size?: string;
+    orientation?: string;
   }): Promise<TemplateResponse> {
     return handleApiCall(this.templatesApi.updateTemplate({
       templateId: id,

@@ -48,6 +48,32 @@ export class DefaultApi extends runtime.BaseAPI {
 
     /**
      */
+    async mcpGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+
+        let urlPath = `/mcp`;
+
+        const response = await this.request({
+            path: urlPath,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async mcpGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.mcpGetRaw(initOverrides);
+    }
+
+    /**
+     */
     async rootGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         const queryParameters: any = {};
 
