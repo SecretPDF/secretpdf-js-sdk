@@ -202,6 +202,7 @@ export class SecretPDFClient {
     templateId?: string;
     data?: Record<string, any>;
     storage?: StorageConfig;
+    size?: string;
     html?: string;
     orientation?: string;
     returnFile?: boolean;
@@ -212,6 +213,9 @@ export class SecretPDFClient {
         templateId: params.templateId,
         data: params.data,
         storage: params.storage,
+        size: params.size,
+        html: params.size,
+        orientation: params.size,
         returnFile: params.returnFile,
         sandbox: params.sandbox,
       }
@@ -299,6 +303,7 @@ export class SecretPDFClient {
         content: params.content,
         name: params.name,
         size: params.size,
+        orientation: params.orientation
       }
     }));
   }
@@ -365,6 +370,7 @@ export class SecretPDFClient {
         content: params.content,
         name: params.name,
         size: params.size,
+        orientation: params.orientation
       }
     }));
   }
