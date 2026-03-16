@@ -19,7 +19,7 @@
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "npm run build",
-    "sdk": "rimraf ./src/api && openapi-generator-cli generate -i http://localhost:8080/documentation/json -g typescript-fetch -o ./src/api",
+    "sdk": "rimraf ./src/api && openapi-generator-cli generate -i https://api.secretpdf.io/documentation/json -g typescript-fetch -o ./src/api",
     "clean": "rimraf ./dist"
   },
   "keywords": [
