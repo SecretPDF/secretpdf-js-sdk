@@ -20,7 +20,8 @@
     "build": "tsc",
     "prepublishOnly": "npm run build",
     "sdk": "rimraf ./src/api && openapi-generator-cli generate -i https://api.secretpdf.io/documentation/json -g typescript-fetch -o ./src/api",
-    "clean": "rimraf ./dist"
+    "clean": "rimraf ./dist",
+    "example": "ts-node examples.ts"
   },
   "keywords": [
     "pdf",
@@ -40,10 +41,10 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "dependencies": {},
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.21.2",
     "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
   }
 }

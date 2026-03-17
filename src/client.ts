@@ -214,8 +214,8 @@ export class SecretPDFClient {
         data: params.data,
         storage: params.storage,
         size: params.size,
-        html: params.size,
-        orientation: params.size,
+        html: params.html,
+        orientation: params.orientation,
         returnFile: params.returnFile,
         sandbox: params.sandbox,
       }
