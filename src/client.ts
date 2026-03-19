@@ -185,6 +185,7 @@ export class SecretPDFClient {
    * @param data - Data to inject into the template
    * @param storage - Optional storage configuration
    * @param returnFile - If true, return PDF in response (default: true)
+   * @param size - Page size (e.g., A4, Letter, 100mm|100mm)
    * @param html - HTML content instead of templateId
    * @param orientation - Page orientation if html is set (portrait | landscape)
    * @param sandbox - If true, add SECRET watermark and charge 0 credits
