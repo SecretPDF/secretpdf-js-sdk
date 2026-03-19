@@ -34,6 +34,24 @@ export interface GenerateDocumentRequest {
      */
     templateId?: string;
     /**
+     * Alternatively, string of the template to use
+     * @type {string}
+     * @memberof GenerateDocumentRequest
+     */
+    html?: string;
+    /**
+     * With html, size of the document to use
+     * @type {string}
+     * @memberof GenerateDocumentRequest
+     */
+    size?: string;
+    /**
+     * With html, orientation of the document to use
+     * @type {string}
+     * @memberof GenerateDocumentRequest
+     */
+    orientation?: string;
+    /**
      * Data to inject into the template
      * @type {object}
      * @memberof GenerateDocumentRequest
@@ -77,6 +95,9 @@ export function GenerateDocumentRequestFromJSONTyped(json: any, ignoreDiscrimina
     return {
         
         'templateId': json['templateId'] == null ? undefined : json['templateId'],
+        'html': json['html'] == null ? undefined : json['html'],
+        'size': json['size'] == null ? undefined : json['size'],
+        'orientation': json['orientation'] == null ? undefined : json['orientation'],
         'data': json['data'] == null ? undefined : json['data'],
         'storage': json['storage'] == null ? undefined : GenerateDocumentRequestStorageFromJSON(json['storage']),
         'returnFile': json['returnFile'] == null ? undefined : json['returnFile'],
@@ -96,6 +117,9 @@ export function GenerateDocumentRequestToJSONTyped(value?: GenerateDocumentReque
     return {
         
         'templateId': value['templateId'],
+        'html': value['html'],
+        'size': value['size'],
+        'orientation': value['orientation'],
         'data': value['data'],
         'storage': GenerateDocumentRequestStorageToJSON(value['storage']),
         'returnFile': value['returnFile'],

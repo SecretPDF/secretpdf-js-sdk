@@ -1,28 +1,28 @@
 
-# UpdateTemplateRequest
+# McpServerInfoGet200Response
 
 
 ## Properties
 
 Name | Type
 ------------ | -------------
-`content` | string
-`name` | string
-`size` | string
-`orientation` | string
+`protocolVersion` | string
+`serverName` | string
+`serverVersion` | string
+`capabilities` | [McpServerInfoGet200ResponseCapabilities](McpServerInfoGet200ResponseCapabilities.md)
 
 ## Example
 
 ```typescript
-import type { UpdateTemplateRequest } from ''
+import type { McpServerInfoGet200Response } from ''
 
 // TODO: Update the object below with actual values
 const example = {
-  "content": null,
-  "name": null,
-  "size": null,
-  "orientation": null,
-} satisfies UpdateTemplateRequest
+  "protocolVersion": null,
+  "serverName": null,
+  "serverVersion": null,
+  "capabilities": null,
+} satisfies McpServerInfoGet200Response
 
 console.log(example)
 
@@ -31,7 +31,7 @@ const exampleJSON: string = JSON.stringify(example)
 console.log(exampleJSON)
 
 // Parse the JSON string back to an object
-const exampleParsed = JSON.parse(exampleJSON) as UpdateTemplateRequest
+const exampleParsed = JSON.parse(exampleJSON) as McpServerInfoGet200Response
 console.log(exampleParsed)
 ```
 

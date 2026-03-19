@@ -9,6 +9,7 @@ Name | Type
 `content` | string
 `name` | string
 `size` | string
+`orientation` | string
 
 ## Example
 
@@ -20,6 +21,7 @@ const example = {
   "content": null,
   "name": null,
   "size": null,
+  "orientation": null,
 } satisfies CreateTemplateRequest
 
 console.log(example)

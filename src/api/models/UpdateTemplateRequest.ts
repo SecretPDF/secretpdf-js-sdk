@@ -37,6 +37,12 @@ export interface UpdateTemplateRequest {
      * @memberof UpdateTemplateRequest
      */
     size?: string;
+    /**
+     * Page orientation (portrait or landscape). Defaults to portrait
+     * @type {string}
+     * @memberof UpdateTemplateRequest
+     */
+    orientation?: string;
 }
 
 /**
@@ -59,6 +65,7 @@ export function UpdateTemplateRequestFromJSONTyped(json: any, ignoreDiscriminato
         'content': json['content'] == null ? undefined : json['content'],
         'name': json['name'] == null ? undefined : json['name'],
         'size': json['size'] == null ? undefined : json['size'],
+        'orientation': json['orientation'] == null ? undefined : json['orientation'],
     };
 }
 
@@ -76,6 +83,7 @@ export function UpdateTemplateRequestToJSONTyped(value?: UpdateTemplateRequest |
         'content': value['content'],
         'name': value['name'],
         'size': value['size'],
+        'orientation': value['orientation'],
     };
 }
 

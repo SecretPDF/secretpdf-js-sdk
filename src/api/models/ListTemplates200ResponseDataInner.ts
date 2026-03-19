@@ -48,6 +48,12 @@ export interface ListTemplates200ResponseDataInner {
      * @type {string}
      * @memberof ListTemplates200ResponseDataInner
      */
+    orientation?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ListTemplates200ResponseDataInner
+     */
     createdAt?: string;
     /**
      * 
@@ -78,6 +84,7 @@ export function ListTemplates200ResponseDataInnerFromJSONTyped(json: any, ignore
         'content': json['content'] == null ? undefined : json['content'],
         'name': json['name'] == null ? undefined : json['name'],
         'size': json['size'] == null ? undefined : json['size'],
+        'orientation': json['orientation'] == null ? undefined : json['orientation'],
         'createdAt': json['createdAt'] == null ? undefined : json['createdAt'],
         'updatedAt': json['updatedAt'] == null ? undefined : json['updatedAt'],
     };
@@ -98,6 +105,7 @@ export function ListTemplates200ResponseDataInnerToJSONTyped(value?: ListTemplat
         'content': value['content'],
         'name': value['name'],
         'size': value['size'],
+        'orientation': value['orientation'],
         'createdAt': value['createdAt'],
         'updatedAt': value['updatedAt'],
     };

@@ -7,6 +7,9 @@
 Name | Type
 ------------ | -------------
 `templateId` | string
+`html` | string
+`size` | string
+`orientation` | string
 `data` | object
 `storage` | [GenerateDocumentRequestStorage](GenerateDocumentRequestStorage.md)
 `returnFile` | boolean
@@ -20,6 +23,9 @@ import type { GenerateDocumentRequest } from ''
 // TODO: Update the object below with actual values
 const example = {
   "templateId": null,
+  "html": null,
+  "size": null,
+  "orientation": null,
   "data": null,
   "storage": null,
   "returnFile": null,
